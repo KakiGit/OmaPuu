@@ -159,4 +159,13 @@
                 app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="98dp"
+        android:layout_height="95dp"
+        android:clickable="true"
+        app:srcCompat="@mipmap/ic_map_foreground"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 </android.support.constraint.ConstraintLayout>
