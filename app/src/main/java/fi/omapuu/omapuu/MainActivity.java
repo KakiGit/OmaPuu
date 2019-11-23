@@ -94,6 +94,15 @@ public class MainActivity extends AppCompatActivity implements
                 startActivity(intent);
             }
         });
+        ImageView user = findViewById(R.id.imageView3);
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),UserActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mapView = findViewById(R.id.view_map);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(MainActivity.this);
