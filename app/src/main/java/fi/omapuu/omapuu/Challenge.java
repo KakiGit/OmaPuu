@@ -5,6 +5,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 
@@ -33,6 +34,15 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
             quiz.setImageResource(R.mipmap.ic_quiz_foreground);
         }
 
+        Button yesBtn = findViewById(R.id.button3);
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),NavMap.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -40,6 +50,11 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         // perform action
         switch(v.getId()) {
             case R.id.blue:
+                FakeDatabase.getInstance().setChallengeDone();
+                constraintLayout.setVisibility(View.VISIBLE);
+                break;
+
+            case R.id.rasp:
                 FakeDatabase.getInstance().setChallengeDone();
                 constraintLayout.setVisibility(View.VISIBLE);
                 break;

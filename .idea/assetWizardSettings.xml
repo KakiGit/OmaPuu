@@ -44,8 +44,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/ques_start.png" />
-                                      <entry key="outputName" value="ic_ques_start" />
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="f7f7f7" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/user (1).png" />
                                     </map>
                                   </option>
                                 </PersistentState>
