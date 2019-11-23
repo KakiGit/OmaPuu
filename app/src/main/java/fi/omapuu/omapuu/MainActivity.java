@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
@@ -21,6 +22,7 @@ import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.mapboxsdk.utils.BitmapUtils;
+
 
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
@@ -56,6 +58,12 @@ public class MainActivity extends AppCompatActivity implements
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 // Mapbox access token is configured here. This needs to be called either in your application
 // object or in the same activity which contains the mapview.
+
+
+
+
+
+
         Mapbox.getInstance(this,"pk.eyJ1Ijoia2FraWsiLCJhIjoiY2szYWZ3cTl6MGJtcTNkazNrMWVzdHhvYyJ9.2UsFQa8NnJzqcfVdFpRXpg");
 
 // This contains the MapView in XML and needs to be called after the access token is configured.
@@ -66,6 +74,15 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PlantTree.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView cameraBtn = findViewById(R.id.imageView5);
+        cameraBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(v.getContext(),CameraActivity.class);
                 startActivity(intent);
             }
         });
