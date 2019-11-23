@@ -86,11 +86,6 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 constraintLayout.setVisibility(View.VISIBLE);
                 break;
 
-            case R.id.rasp:
-                FakeDatabase.getInstance().setChallengeDone();
-                constraintLayout.setVisibility(View.VISIBLE);
-                break;
-
             case R.id.quiz:
                 FakeDatabase.getInstance().setQuizDone();
                 Intent in = new Intent(v.getContext(), Quiz.class);
@@ -100,9 +95,13 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
             case R.id.button3:
                 constraintLayout.setVisibility(View.INVISIBLE);
                 //change text to new dialog box
-
                 Intent in2 = new Intent(v.getContext(), Loading.class);
                 startActivity(in2);
+                break;
+
+            // close dialog
+            case R.id.button4:
+                constraintLayout.setVisibility(View.INVISIBLE);
                 break;
 
             case R.id.view_map:
