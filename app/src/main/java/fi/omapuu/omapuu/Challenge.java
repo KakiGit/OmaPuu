@@ -47,6 +47,37 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        blue = (ImageView) findViewById(R.id.blue);
+        quiz = (ImageView) findViewById(R.id.quiz);
+        map = (ImageView) findViewById(R.id.mapView);
+
+        constraintLayout = findViewById(R.id.popUP);
+        // set on click listeners
+        blue.setOnClickListener(this);
+        quiz.setOnClickListener(this);
+        map.setOnClickListener(this);
+
+        if (FakeDatabase.getInstance().isChallengeDone()){
+            blue.setImageResource(R.mipmap.ic_blue_prog_foreground);
+        }
+
+        if (FakeDatabase.getInstance().isQuizDone()){
+            quiz.setImageResource(R.mipmap.ic_quiz_foreground);
+        }
+
+        Button yesBtn = findViewById(R.id.button3);
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),NavMap.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
     public void onClick(View v) {
         // perform action
         switch(v.getId()) {
@@ -62,8 +93,8 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
             case R.id.quiz:
                 FakeDatabase.getInstance().setQuizDone();
-//                Intent in = new Intent(v.getContext(), Quiz.class);
-//                startActivity(in);
+                Intent in = new Intent(v.getContext(), Quiz.class);
+                startActivity(in);
                 break;
 
             case R.id.button3:
@@ -81,4 +112,5 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 break;
         }
     }
+
 }

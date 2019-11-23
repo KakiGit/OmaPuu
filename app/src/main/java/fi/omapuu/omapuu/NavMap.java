@@ -49,7 +49,14 @@ public class NavMap extends AppCompatActivity implements
     private MapView mapView;
     private MapboxMap mapboxMap;
     ImageButton refreshBtn;
-    List<String> uris = Arrays.asList("mapbox://styles/kakik/ck3bac60a0er41cqhbtkwl2oj","mapbox://styles/kakik/ck3bwzr7u2gto1cogz49693c5");
+    List<String> uris = Arrays.asList(
+            "mapbox://styles/kakik/ck3bac60a0er41cqhbtkwl2oj"
+            ,"mapbox://styles/kakik/ck3bwzr7u2gto1cogz49693c5"
+            ,"mapbox://styles/kakik/ck3byesja2gkr1cp7o5munfh6"
+            ,"mapbox://styles/kakik/ck3byfccb1nnc1clknjecsk8p"
+            ,"mapbox://styles/kakik/ck3byfn881nnj1clkichzhd0k"
+            ,"mapbox://styles/kakik/ck3byg70o1sm31cpa5frkesqi"
+    );
     int clickCount = 0;
 
 
