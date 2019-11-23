@@ -17,23 +17,23 @@
 
     <ImageView
         android:id="@+id/quiz"
-        android:layout_width="109dp"
-        android:layout_height="113dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/blue"
         app:layout_constraintTop_toBottomOf="@+id/fade"
-        app:layout_constraintVertical_bias="0.156"
+        app:layout_constraintVertical_bias="0.107"
         app:srcCompat="@mipmap/ic_quiz_foreground"
-        tools:layout_editor_absoluteX="245dp" />
+        tools:layout_editor_absoluteX="241dp" />
 
     <ImageView
         android:id="@+id/rasp"
-        android:layout_width="110dp"
-        android:layout_height="107dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:clickable="true"
-        app:srcCompat="@mipmap/ic_ras_done_foreground"
+        app:srcCompat="@mipmap/ic_ras_start_foreground"
         tools:layout_editor_absoluteX="151dp"
         tools:layout_editor_absoluteY="183dp" />
 
@@ -41,18 +41,18 @@
         android:id="@+id/blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
+
         app:layout_constraintTop_toBottomOf="@+id/fade1"
         app:srcCompat="@mipmap/ic_blueberry_foreground"
-        tools:layout_editor_absoluteX="56dp" />
+        tools:layout_editor_absoluteX="59dp" />
 
     <ImageView
         android:id="@+id/fade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:clickable="false"
         app:srcCompat="@mipmap/ic_lock_foreground"
-        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteX="212dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <ImageView
@@ -60,7 +60,7 @@
 
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:clickable="true"
+        android:clickable="false"
         app:srcCompat="@mipmap/ic_lock_foreground"
         tools:layout_editor_absoluteX="81dp"
         tools:layout_editor_absoluteY="16dp" />
