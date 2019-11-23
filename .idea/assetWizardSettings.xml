@@ -19,7 +19,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$USER_HOME$/Downloads/refresh.png" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Downloads/ques_done.png" />
                                       <entry key="outputName" value="ic_refresh" />
                                     </map>
                                   </option>
@@ -59,20 +59,13 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="f7f7f7" />
-                                      <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/user (1).png" />
-                                      <entry key="foregroundLayerName" value="ic_launcher_foreground" />
-                                      <entry key="outputName" value="ic_refresh" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/ques_done.png" />
+                                      <entry key="outputName" value="ic_quiz" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>
