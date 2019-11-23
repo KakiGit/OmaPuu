@@ -3,11 +3,14 @@ package fi.omapuu.omapuu;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Window;
 
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -31,7 +34,8 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textOffset;
  * cannot be found in a map style, a custom image can be provided to the map via
  * the listener.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        OnMapReadyCallback, MapboxMap.OnMapClickListener {
 
     private static final String ICON_SOURCE_ID = "ICON_SOURCE_ID";
     private static final String ICON_LAYER_ID = "ICON_LAYER_ID";
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 // Mapbox access token is configured here. This needs to be called either in your application
 // object or in the same activity which contains the mapview.
         Mapbox.getInstance(this,"pk.eyJ1Ijoia2FraWsiLCJhIjoiY2szYWZ3cTl6MGJtcTNkazNrMWVzdHhvYyJ9.2UsFQa8NnJzqcfVdFpRXpg");
@@ -107,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         });
             }
         });
+        mapView.getMapAsync(MainActivity.this);
 
 // Use the listener to match the id with the appropriate person. The correct profile photo is
 // given to the map during "runtime".
@@ -135,6 +140,59 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onMapReady(@NonNull final MapboxMap mapboxMap) {
+
+// Add Features which represent the location of each profile photo SymbolLayer icon
+        Feature carlosFeature = Feature.fromGeometry(Point.fromLngLat(23.438524,63.115847));
+        carlosFeature.addStringProperty(PROFILE_NAME, CARLOS);
+
+        Feature antonyFeature = Feature.fromGeometry(Point.fromLngLat(24.976689,61.996333));
+        antonyFeature.addStringProperty(PROFILE_NAME, ANTONY);
+
+        Feature mariaFeature = Feature.fromGeometry(Point.fromLngLat(27.663449,61.927016));
+        mariaFeature.addStringProperty(PROFILE_NAME, MARIA);
+
+        Feature lucianaFeature = Feature.fromGeometry(Point.fromLngLat(23.735343,60.594947));
+        lucianaFeature.addStringProperty(PROFILE_NAME, LUCIANA);
+
+// Use a URL to build and add a Style object to the map. Then add a source to the Style.
+        mapboxMap.setStyle(
+                new Style.Builder().fromUri("mapbox://styles/kakik/ck3bbkrtw1wdm1cqjdvxjdsrn")
+                        .withSource(new GeoJsonSource(ICON_SOURCE_ID,
+                                FeatureCollection.fromFeatures(new Feature[] {
+                                        carlosFeature,
+                                        antonyFeature,
+                                        mariaFeature,
+                                        lucianaFeature}))),
+                new Style.OnStyleLoaded() {
+                    @Override
+                    public void onStyleLoaded(@NonNull Style style) {
+                        MainActivity.this.mapboxMap = mapboxMap;
+
+// Add a SymbolLayer to the style. iconImage is set to a value that will
+// be used later in the addOnStyleImageMissingListener below
+                        style.addLayer(new SymbolLayer(ICON_LAYER_ID, ICON_SOURCE_ID).withProperties(
+                                iconImage(get(PROFILE_NAME)),
+                                iconIgnorePlacement(true),
+                                iconAllowOverlap(true),
+                                textField(get(PROFILE_NAME)),
+                                textIgnorePlacement(true),
+                                textAllowOverlap(true),
+                                textOffset(new Float[] {0f, 1f})
+                        ));
+                    }
+                });
+        mapboxMap.addOnMapClickListener(MainActivity.this);
+    }
+
+    @Override
+    public boolean onMapClick(@NonNull LatLng point) {
+        Log.d("OmaPuu","map tapped");
+
+        return false;
     }
 
     private void addImage(String id, int drawableImage) {
@@ -179,6 +237,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (mapboxMap != null) {
+            mapboxMap.removeOnMapClickListener(this);
+        }
         mapView.onDestroy();
     }
 
