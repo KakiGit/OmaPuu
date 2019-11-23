@@ -15,10 +15,25 @@ public class PlantTree extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plant_tree);
 
-       
+       ImageView cameraBtn = findViewById(R.id.imageView5);
+       cameraBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               checkCameraHardware(v.getContext());
+           }
+       });
     }
 
-
+    /** Check if this device has a camera */
+    private boolean checkCameraHardware(Context context) {
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+            // this device has a camera
+            return true;
+        } else {
+            // no camera on this device
+            return false;
+        }
+    }
 
 
 }

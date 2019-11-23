@@ -44,10 +44,8 @@ public class MainActivity extends AppCompatActivity implements
     private static final String ICON_LAYER_ID = "ICON_LAYER_ID";
     private static final String PROFILE_NAME = "PROFILE_NAME";
     private static final String OULANKA = "Oulanka";
-    private static final String ANTONY = "Antony";
-    private static final String SIBELIUS = "Sibelius Park";
+    private static final String RIOTTASKORPI = "Riuttaskorpi Forest";
     private static final String NUUKSIO = "Nuuksio National Park";
-    private static final String LUCIANA = "Luciana";
     private MapView mapView;
     private MapboxMap mapboxMap;
 
@@ -74,56 +72,6 @@ public class MainActivity extends AppCompatActivity implements
 
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(@NonNull final MapboxMap mapboxMap) {
-
-// Add Features which represent the location of each profile photo SymbolLayer icon
-                Feature oulFeature = Feature.fromGeometry(Point.fromLngLat(29.322095,66.374677));
-                oulFeature.addStringProperty(PROFILE_NAME, OULANKA);
-
-                Feature antonyFeature = Feature.fromGeometry(Point.fromLngLat(24.976689,61.996333));
-                antonyFeature.addStringProperty(PROFILE_NAME, ANTONY);
-
-                Feature sibFeature = Feature.fromGeometry(Point.fromLngLat(24.914036,60.181607));
-                sibFeature.addStringProperty(PROFILE_NAME, SIBELIUS);
-
-                Feature lucianaFeature = Feature.fromGeometry(Point.fromLngLat(23.735343,60.594947));
-                lucianaFeature.addStringProperty(PROFILE_NAME, LUCIANA);
-
-                Feature parkFeature = Feature.fromGeometry(Point.fromLngLat(24.481033,60.312849));
-                parkFeature.addStringProperty(PROFILE_NAME, NUUKSIO);
-
-// Use a URL to build and add a Style object to the map. Then add a source to the Style.
-                mapboxMap.setStyle(
-                        new Style.Builder().fromUri("mapbox://styles/kakik/ck3bbkrtw1wdm1cqjdvxjdsrn")
-                                .withSource(new GeoJsonSource(ICON_SOURCE_ID,
-                                        FeatureCollection.fromFeatures(new Feature[] {
-                                                oulFeature,
-                                                antonyFeature,
-                                                sibFeature,
-                                                lucianaFeature,
-                                                parkFeature}))),
-                        new Style.OnStyleLoaded() {
-                            @Override
-                            public void onStyleLoaded(@NonNull Style style) {
-                                MainActivity.this.mapboxMap = mapboxMap;
-
-// Add a SymbolLayer to the style. iconImage is set to a value that will
-// be used later in the addOnStyleImageMissingListener below
-                                style.addLayer(new SymbolLayer(ICON_LAYER_ID, ICON_SOURCE_ID).withProperties(
-                                        iconImage(get(PROFILE_NAME)),
-                                        iconIgnorePlacement(true),
-                                        iconAllowOverlap(true),
-                                        textField(get(PROFILE_NAME)),
-                                        textIgnorePlacement(true),
-                                        textAllowOverlap(true),
-                                        textOffset(new Float[] {0f, 2f})
-                                ));
-                            }
-                        });
-            }
-        });
         mapView.getMapAsync(MainActivity.this);
 
 // Use the listener to match the id with the appropriate person. The correct profile photo is
@@ -135,13 +83,7 @@ public class MainActivity extends AppCompatActivity implements
                     case OULANKA:
                         addImage(id, R.drawable.ic_tree);
                         break;
-                    case ANTONY:
-                        addImage(id, R.drawable.ic_tree);
-                        break;
-                    case SIBELIUS:
-                        addImage(id, R.drawable.ic_tree);
-                        break;
-                    case LUCIANA:
+                    case RIOTTASKORPI:
                         addImage(id, R.drawable.ic_tree);
                         break;
                     case NUUKSIO:
@@ -158,46 +100,46 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
 
+
 // Add Features which represent the location of each profile photo SymbolLayer icon
-        Feature carlosFeature = Feature.fromGeometry(Point.fromLngLat(23.438524,63.115847));
-        carlosFeature.addStringProperty(PROFILE_NAME, CARLOS);
+            Feature oulFeature = Feature.fromGeometry(Point.fromLngLat(29.322095,66.374677));
+            oulFeature.addStringProperty(PROFILE_NAME, OULANKA);
 
-        Feature antonyFeature = Feature.fromGeometry(Point.fromLngLat(24.976689,61.996333));
-        antonyFeature.addStringProperty(PROFILE_NAME, ANTONY);
 
-        Feature mariaFeature = Feature.fromGeometry(Point.fromLngLat(27.663449,61.927016));
-        mariaFeature.addStringProperty(PROFILE_NAME, MARIA);
+            Feature sibFeature = Feature.fromGeometry(Point.fromLngLat(23.606703,61.964048));
+            sibFeature.addStringProperty(PROFILE_NAME, RIOTTASKORPI);
 
-        Feature lucianaFeature = Feature.fromGeometry(Point.fromLngLat(23.735343,60.594947));
-        lucianaFeature.addStringProperty(PROFILE_NAME, LUCIANA);
+
+            Feature parkFeature = Feature.fromGeometry(Point.fromLngLat(24.467478,60.294859));
+            parkFeature.addStringProperty(PROFILE_NAME, NUUKSIO);
 
 // Use a URL to build and add a Style object to the map. Then add a source to the Style.
-        mapboxMap.setStyle(
-                new Style.Builder().fromUri("mapbox://styles/kakik/ck3bbkrtw1wdm1cqjdvxjdsrn")
-                        .withSource(new GeoJsonSource(ICON_SOURCE_ID,
-                                FeatureCollection.fromFeatures(new Feature[] {
-                                        carlosFeature,
-                                        antonyFeature,
-                                        mariaFeature,
-                                        lucianaFeature}))),
-                new Style.OnStyleLoaded() {
-                    @Override
-                    public void onStyleLoaded(@NonNull Style style) {
-                        MainActivity.this.mapboxMap = mapboxMap;
+            mapboxMap.setStyle(
+                    new Style.Builder().fromUri("mapbox://styles/kakik/ck3bbkrtw1wdm1cqjdvxjdsrn")
+                            .withSource(new GeoJsonSource(ICON_SOURCE_ID,
+                                    FeatureCollection.fromFeatures(new Feature[] {
+                                            oulFeature,
+                                            sibFeature,
+                                            parkFeature}))),
+                    new Style.OnStyleLoaded() {
+                        @Override
+                        public void onStyleLoaded(@NonNull Style style) {
+                            MainActivity.this.mapboxMap = mapboxMap;
 
 // Add a SymbolLayer to the style. iconImage is set to a value that will
 // be used later in the addOnStyleImageMissingListener below
-                        style.addLayer(new SymbolLayer(ICON_LAYER_ID, ICON_SOURCE_ID).withProperties(
-                                iconImage(get(PROFILE_NAME)),
-                                iconIgnorePlacement(true),
-                                iconAllowOverlap(true),
-                                textField(get(PROFILE_NAME)),
-                                textIgnorePlacement(true),
-                                textAllowOverlap(true),
-                                textOffset(new Float[] {0f, 1f})
-                        ));
-                    }
-                });
+                            style.addLayer(new SymbolLayer(ICON_LAYER_ID, ICON_SOURCE_ID).withProperties(
+                                    iconImage(get(PROFILE_NAME)),
+                                    iconIgnorePlacement(true),
+                                    iconAllowOverlap(true),
+                                    textField(get(PROFILE_NAME)),
+                                    textIgnorePlacement(true),
+                                    textAllowOverlap(true),
+                                    textOffset(new Float[] {0f, 2f})
+                            ));
+                        }
+                    });
+
         mapboxMap.addOnMapClickListener(MainActivity.this);
     }
 
