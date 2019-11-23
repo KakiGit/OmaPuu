@@ -44,7 +44,7 @@ public class NavMap extends AppCompatActivity implements
     private static final String OULANKA = "Oulanka";
     private static final String RIOTTASKORPI = "Riuttaskorpi Forest";
     private static final String NUUKSIO = "Nuuksio National Park";
-    private static final String MAN = "";
+    private static final String MAN = "You";
     private MapView mapView;
     private MapboxMap mapboxMap;
     ImageButton refreshBtn;
@@ -140,8 +140,8 @@ public class NavMap extends AppCompatActivity implements
             Feature parkFeature = Feature.fromGeometry(Point.fromLngLat(24.467478,60.294859));
             parkFeature.addStringProperty(PROFILE_NAME, NUUKSIO);
 
-            Feature manFeature = Feature.fromGeometry(Point.fromLngLat(25.867478,59.894859));
-            parkFeature.addStringProperty(PROFILE_NAME, MAN);
+            Feature manFeature = Feature.fromGeometry(Point.fromLngLat(24.497478,60.314859));
+            manFeature.addStringProperty(PROFILE_NAME, MAN);
 
 // Use a URL to build and add a Style object to the map. Then add a source to the Style.
             mapboxMap.setStyle(
@@ -150,7 +150,8 @@ public class NavMap extends AppCompatActivity implements
                                     FeatureCollection.fromFeatures(new Feature[] {
                                             oulFeature,
                                             sibFeature,
-                                            parkFeature}))),
+                                            parkFeature,
+                                            manFeature}))),
                     new Style.OnStyleLoaded() {
                         @Override
                         public void onStyleLoaded(@NonNull Style style) {

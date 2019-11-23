@@ -23,17 +23,17 @@ public class Quiz extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 clickCount++;
-                if (clickCount == 0) {
+                if (clickCount == 2) {
                     quiz.setImageResource(R.drawable.quiz1_a);
-                } else if (clickCount == 1) {
-                    quiz.setImageResource(R.drawable.quiz2);
-                } else if (clickCount == 2) {
-                    quiz.setImageResource(R.drawable.quiz2_a);
                 } else if (clickCount == 3) {
-                    quiz.setImageResource(R.drawable.quiz3);
-                } else if (clickCount == 4) {
-                    quiz.setImageResource(R.drawable.quiz3_a);
+                    quiz.setImageResource(R.drawable.quiz2);
                 } else if (clickCount == 5) {
+                    quiz.setImageResource(R.drawable.quiz2_a);
+                } else if (clickCount == 6) {
+                    quiz.setImageResource(R.drawable.quiz3);
+                } else if (clickCount == 8) {
+                    quiz.setImageResource(R.drawable.quiz3_a);
+                } else if (clickCount == 9) {
                     FakeDatabase.getInstance().setQuizDone();
                     quiz.setImageResource(R.drawable.quizdone);
                 }
