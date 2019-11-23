@@ -3,6 +3,7 @@ package fi.omapuu.omapuu;
 public class FakeDatabase {
     boolean challengeDone;
     boolean quizDone;
+    int level = 0;
     private static final FakeDatabase ourInstance = new FakeDatabase();
 
     public static FakeDatabase getInstance() {
@@ -13,6 +14,7 @@ public class FakeDatabase {
     }
 
     public void setChallengeDone() {
+        level++;
         this.challengeDone = true;
     }
 
@@ -29,7 +31,12 @@ public class FakeDatabase {
     }
 
     public void setQuizDone() {
+        level++;
         this.quizDone = true;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public boolean isQuizDone() {

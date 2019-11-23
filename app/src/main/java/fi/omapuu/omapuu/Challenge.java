@@ -13,6 +13,7 @@ import android.widget.ImageView;
 public class Challenge extends AppCompatActivity implements View.OnClickListener {
      private ImageView blue, quiz, map;
      private ConstraintLayout constraintLayout;
+     ImageView omaPuu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         blue = (ImageView) findViewById(R.id.blue);
         quiz = (ImageView) findViewById(R.id.quiz);
         map = (ImageView) findViewById(R.id.view_map);
-
+        omaPuu = findViewById(R.id.omaPuu);
         constraintLayout = findViewById(R.id.popUP);
         // set on click listeners
         blue.setOnClickListener(this);
@@ -36,6 +37,14 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
         if (FakeDatabase.getInstance().isQuizDone()){
             quiz.setImageResource(R.mipmap.ic_quiz_foreground);
+        }
+
+        if (FakeDatabase.getInstance().getLevel()==0){
+            omaPuu.setImageResource(R.drawable.small);
+        } else if (FakeDatabase.getInstance().getLevel()==1) {
+            omaPuu.setImageResource(R.drawable.med);
+        } else {
+            omaPuu.setImageResource(R.drawable.large);
         }
 
         Button yesBtn = findViewById(R.id.button3);
@@ -65,6 +74,13 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
             quiz.setImageResource(R.mipmap.ic_quiz_foreground);
         }
 
+        if (FakeDatabase.getInstance().getLevel()==0){
+            omaPuu.setImageResource(R.drawable.small);
+        } else if (FakeDatabase.getInstance().getLevel()==1) {
+            omaPuu.setImageResource(R.drawable.med);
+        } else {
+            omaPuu.setImageResource(R.drawable.large);
+        }
 
 
     }
