@@ -31,6 +31,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -79,6 +80,8 @@ public class CameraActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 takePicture();
+                ImageView recognised = findViewById(R.id.imageView7);
+                recognised.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -207,7 +210,7 @@ public class CameraActivity extends AppCompatActivity {
                 @Override
                 public void onCaptureCompleted(CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
                     super.onCaptureCompleted(session, request, result);
-                    Toast.makeText(CameraActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CameraActivity.this, "Blueberry Recognised", Toast.LENGTH_SHORT).show();
                     createCameraPreview();
                 }
             };

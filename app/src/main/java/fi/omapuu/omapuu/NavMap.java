@@ -50,6 +50,7 @@ public class NavMap extends AppCompatActivity implements
     ImageButton refreshBtn;
     List<String> uris = Arrays.asList(
             "mapbox://styles/kakik/ck3bac60a0er41cqhbtkwl2oj"
+            ,"mapbox://styles/kakik/ck3c29nmx17je1co9y9r71wm4"
             ,"mapbox://styles/kakik/ck3bwzr7u2gto1cogz49693c5"
             ,"mapbox://styles/kakik/ck3byesja2gkr1cp7o5munfh6"
             ,"mapbox://styles/kakik/ck3byfccb1nnc1clknjecsk8p"

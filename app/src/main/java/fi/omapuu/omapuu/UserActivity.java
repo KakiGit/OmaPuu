@@ -18,10 +18,14 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 clickCount++;
-                if (clickCount%2 == 0) {
+                if (clickCount%4 == 0) {
                     userPage.setImageResource(R.drawable.user_badges);
-                } else if (clickCount%2 == 1) {
+                } else if (clickCount%4 == 1) {
                     userPage.setImageResource(R.drawable.nuuksia_tree);
+                } else if (clickCount%4 == 2) {
+                    userPage.setImageResource(R.drawable.oulanka_forest);
+                } else if (clickCount%4 == 3) {
+                    userPage.setImageResource(R.drawable.riuttaskorpi_forest);
                 }
             }
         });
