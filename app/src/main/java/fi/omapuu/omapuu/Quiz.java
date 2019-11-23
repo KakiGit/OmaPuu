@@ -1,40 +1,43 @@
 package fi.omapuu.omapuu;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 public class Quiz extends AppCompatActivity {
-    private RadioGroup radioGroup;
-    private Button nxt;
-    private TextView tv;
+    ImageView quiz;
+    int clickCount = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
-        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
+        quiz = findViewById(R.id.imageView9);
+        quiz.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId){
-
-                if (checkedId == R.id.radio3) {
-                    //setContentView(R.layout.final1);
-                    tv = findViewById(R.id.textView5);
-                    tv.setVisibility(View.VISIBLE);
-                }
-                else{
-                    //setContentView(R.layout.final2);
-                    tv = findViewById(R.id.textView); //print wrong answer
-                    tv.setVisibility(View.VISIBLE);
+            public void onClick(View v) {
+                clickCount++;
+                if (clickCount == 0) {
+                    quiz.setImageResource(R.drawable.quiz1_a);
+                } else if (clickCount == 1) {
+                    quiz.setImageResource(R.drawable.quiz2);
+                } else if (clickCount == 2) {
+                    quiz.setImageResource(R.drawable.quiz2_a);
+                } else if (clickCount == 3) {
+                    quiz.setImageResource(R.drawable.quiz3);
+                } else if (clickCount == 4) {
+                    quiz.setImageResource(R.drawable.quiz3_a);
+                } else if (clickCount == 5) {
+                    quiz.setImageResource(R.drawable.quizdone);
                 }
             }
         });
+
     }
 }

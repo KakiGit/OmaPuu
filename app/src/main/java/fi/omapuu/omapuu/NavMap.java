@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.mapbox.geojson.Feature;
@@ -22,6 +23,10 @@ import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.mapboxsdk.utils.BitmapUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
@@ -43,8 +48,9 @@ public class NavMap extends AppCompatActivity implements
     private static final String MAN = "";
     private MapView mapView;
     private MapboxMap mapboxMap;
-
-
+    ImageButton refreshBtn;
+    List<String> uris = Arrays.asList("mapbox://styles/kakik/ck3bac60a0er41cqhbtkwl2oj","mapbox://styles/kakik/ck3bwzr7u2gto1cogz49693c5");
+    int clickCount = 0;
 
 
         @Override
@@ -76,6 +82,15 @@ public class NavMap extends AppCompatActivity implements
                     startActivity(intent);
                 }
             });
+            refreshBtn = findViewById(R.id.refresh);
+            refreshBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickCount++;
+                    setMapStyle(mapboxMap,uris.get(clickCount%uris.size()));
+                }
+            });
+
             mapView = findViewById(R.id.mapView);
             mapView.onCreate(savedInstanceState);
             mapView.getMapAsync(this);
@@ -106,11 +121,8 @@ public class NavMap extends AppCompatActivity implements
             });
         }
 
-        @Override
-        public void onMapReady(@NonNull final MapboxMap mapboxMap) {
-
-
-// Add Features which represent the location of each profile photo SymbolLayer icon
+        private void setMapStyle(@NonNull final  MapboxMap mapboxMap,String uri) {
+            // Add Features which represent the location of each profile photo SymbolLayer icon
             Feature oulFeature = Feature.fromGeometry(Point.fromLngLat(29.322095,66.374677));
             oulFeature.addStringProperty(PROFILE_NAME, OULANKA);
 
@@ -127,7 +139,7 @@ public class NavMap extends AppCompatActivity implements
 
 // Use a URL to build and add a Style object to the map. Then add a source to the Style.
             mapboxMap.setStyle(
-                    new Style.Builder().fromUri("mapbox://styles/kakik/ck3bac60a0er41cqhbtkwl2oj")
+                    new Style.Builder().fromUri(uri)
                             .withSource(new GeoJsonSource(ICON_SOURCE_ID,
                                     FeatureCollection.fromFeatures(new Feature[] {
                                             oulFeature,
@@ -151,6 +163,12 @@ public class NavMap extends AppCompatActivity implements
                             ));
                         }
                     });
+        }
+
+        @Override
+        public void onMapReady(@NonNull final MapboxMap mapboxMap) {
+
+            setMapStyle(mapboxMap,uris.get(clickCount%uris.size()));
 
             mapboxMap.addOnMapClickListener(NavMap.this);
         }
