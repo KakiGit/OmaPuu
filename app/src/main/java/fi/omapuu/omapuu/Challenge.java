@@ -19,7 +19,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
         blue = (ImageView) findViewById(R.id.blue);
         quiz = (ImageView) findViewById(R.id.quiz);
-        map = (ImageView) findViewById(R.id.mapView);
+        map = (ImageView) findViewById(R.id.view_map);
 
         constraintLayout = findViewById(R.id.popUP);
         // set on click listeners
@@ -51,7 +51,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         super.onRestart();
         blue = (ImageView) findViewById(R.id.blue);
         quiz = (ImageView) findViewById(R.id.quiz);
-        map = (ImageView) findViewById(R.id.mapView);
+        map = (ImageView) findViewById(R.id.view_map);
 
         constraintLayout = findViewById(R.id.popUP);
         // set on click listeners
@@ -105,7 +105,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 startActivity(in2);
                 break;
 
-            case R.id.mapView:
+            case R.id.view_map:
                 constraintLayout.setVisibility(View.INVISIBLE);
                 Intent in3 = new Intent(v.getContext(), NavMap.class);
                 startActivity(in3);

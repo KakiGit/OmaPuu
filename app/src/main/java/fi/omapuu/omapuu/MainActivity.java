@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements
                 startActivity(intent);
             }
         });
-        mapView = findViewById(R.id.mapView);
+        mapView = findViewById(R.id.view_map);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(MainActivity.this);
 
