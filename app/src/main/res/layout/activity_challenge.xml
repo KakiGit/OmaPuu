@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/mapbox_blue"
+    tools:context=".Challenge">
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="240dp"
+        android:background="@drawable/sprout"
+        android:gravity="center_vertical|center"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="302dp" />
+
+    <ImageView
+        android:id="@+id/quiz"
+        android:layout_width="109dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/blue"
+        app:layout_constraintTop_toBottomOf="@+id/fade"
+        app:layout_constraintVertical_bias="0.156"
+        app:srcCompat="@mipmap/ic_quiz_foreground"
+        tools:layout_editor_absoluteX="245dp" />
+
+    <ImageView
+        android:id="@+id/rasp"
+        android:layout_width="110dp"
+        android:layout_height="107dp"
+        android:clickable="true"
+        app:srcCompat="@mipmap/ic_ras_done_foreground"
+        tools:layout_editor_absoluteX="151dp"
+        tools:layout_editor_absoluteY="183dp" />
+
+    <ImageView
+        android:id="@+id/blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/fade1"
+        app:srcCompat="@mipmap/ic_blueberry_foreground"
+        tools:layout_editor_absoluteX="56dp" />
+
+    <ImageView
+        android:id="@+id/fade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@mipmap/ic_lock_foreground"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/fade1"
+
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:clickable="true"
+        app:srcCompat="@mipmap/ic_lock_foreground"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+</android.support.constraint.ConstraintLayout>
