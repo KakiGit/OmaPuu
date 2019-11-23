@@ -20,6 +20,14 @@ public class FakeDatabase {
         return challengeDone;
     }
 
+    public void resetChallenge() {
+        this.challengeDone = false;
+    }
+
+    public void resetQuiz() {
+        this.quizDone = false;
+    }
+
     public void setQuizDone() {
         this.quizDone = true;
     }

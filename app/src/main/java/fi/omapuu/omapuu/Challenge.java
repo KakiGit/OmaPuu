@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 
 public class Challenge extends AppCompatActivity implements View.OnClickListener {
-     private  ImageView rasp;
+     private  ImageView blue;
      private ImageView quiz;
      private ConstraintLayout constraintLayout;
     @Override
@@ -16,16 +16,16 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge);
 
-        rasp = (ImageView) findViewById(R.id.rasp);
+        blue = (ImageView) findViewById(R.id.blue);
         quiz = (ImageView) findViewById(R.id.quiz);
 
         constraintLayout = findViewById(R.id.popUP);
         // set on click listeners
-        rasp.setOnClickListener(this);
+        blue.setOnClickListener(this);
         quiz.setOnClickListener(this);
 
         if (FakeDatabase.getInstance().isChallengeDone()){
-            rasp.setImageResource(R.mipmap.ic_raspberry_foreground);
+            blue.setImageResource(R.mipmap.ic_blue_prog_foreground);
         }
 
         if (FakeDatabase.getInstance().isQuizDone()){
@@ -38,7 +38,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         // perform action
         switch(v.getId()) {
-            case R.id.rasp:
+            case R.id.blue:
                 FakeDatabase.getInstance().setChallengeDone();
                 constraintLayout.setVisibility(View.VISIBLE);
                 break;
@@ -46,6 +46,12 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
             case R.id.quiz:
                 FakeDatabase.getInstance().setQuizDone();
                 constraintLayout.setVisibility(View.VISIBLE);
+                break;
+
+            case R.id.button4:
+                FakeDatabase.getInstance().resetChallenge();
+                FakeDatabase.getInstance().resetQuiz(); // no selection
+                constraintLayout.setVisibility(View.INVISIBLE);
                 break;
         }
     }
