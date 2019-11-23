@@ -25,6 +25,7 @@
         <activity android:name=".PlantTree">
 
         </activity>
+        <activity android:name=".NavMap"></activity>
     </application>
 
 </manifest>

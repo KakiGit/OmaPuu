@@ -8,61 +8,85 @@
     tools:context=".Challenge">
 
     <ImageView
-        android:layout_width="160dp"
-        android:layout_height="240dp"
+        android:id="@+id/imageView"
+        android:layout_width="260dp"
+        android:layout_height="340dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="328dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/sprout"
         android:gravity="center_vertical|center"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="302dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/quiz"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/blue"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fade"
-        app:layout_constraintVertical_bias="0.107"
-        app:srcCompat="@mipmap/ic_quiz_foreground"
-        tools:layout_editor_absoluteX="241dp" />
+        app:layout_constraintVertical_bias="0.068"
+        app:srcCompat="@mipmap/ic_ques_start_foreground" />
 
     <ImageView
         android:id="@+id/rasp"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="52dp"
         android:clickable="true"
-        app:srcCompat="@mipmap/ic_ras_start_foreground"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="183dp" />
+        android:gravity="center_vertical|center"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@mipmap/ic_ras_start_foreground" />
 
     <ImageView
         android:id="@+id/blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:clickable="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/quiz"
+        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fade1"
-        app:srcCompat="@mipmap/ic_blueberry_foreground"
-        tools:layout_editor_absoluteX="59dp" />
+        app:srcCompat="@mipmap/ic_blueberry_foreground" />
 
     <ImageView
         android:id="@+id/fade"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginEnd="76dp"
         android:clickable="false"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@mipmap/ic_lock_foreground"
-        tools:layout_editor_absoluteX="212dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="48dp" />
 
     <ImageView
         android:id="@+id/fade1"
 
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:clickable="false"
+        app:layout_constraintEnd_toStartOf="@+id/fade"
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/ic_lock_foreground"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="48dp" />
 
 </android.support.constraint.ConstraintLayout>

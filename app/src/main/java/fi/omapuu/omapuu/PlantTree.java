@@ -1,6 +1,7 @@
 package fi.omapuu.omapuu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,6 +23,17 @@ public class PlantTree extends AppCompatActivity {
                checkCameraHardware(v.getContext());
            }
        });
+
+        Button plant = findViewById(R.id.button2);
+        plant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(v.getContext(), Challenge.class);
+//                in.putExtra("message", "Raspberry selected, change button");
+                startActivity(in);
+            }
+
+        });
     }
 
     /** Check if this device has a camera */
