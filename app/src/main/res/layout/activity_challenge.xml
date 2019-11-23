@@ -163,6 +163,13 @@
         android:id="@+id/view_map"
         android:layout_width="98dp"
         android:layout_height="95dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/ic_map_foreground" />
 </android.support.constraint.ConstraintLayout>

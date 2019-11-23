@@ -34,6 +34,7 @@ public class Quiz extends AppCompatActivity {
                 } else if (clickCount == 4) {
                     quiz.setImageResource(R.drawable.quiz3_a);
                 } else if (clickCount == 5) {
+                    FakeDatabase.getInstance().setQuizDone();
                     quiz.setImageResource(R.drawable.quizdone);
                 }
             }

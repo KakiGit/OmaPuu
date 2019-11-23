@@ -95,7 +95,6 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.quiz:
-                FakeDatabase.getInstance().setQuizDone();
                 Intent in = new Intent(v.getContext(), Quiz.class);
                 startActivity(in);
                 break;
