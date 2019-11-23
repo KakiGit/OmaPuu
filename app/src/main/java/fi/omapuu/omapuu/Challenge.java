@@ -67,7 +67,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
 
         if (FakeDatabase.getInstance().isChallengeDone()){
-            blue.setImageResource(R.mipmap.ic_blue_prog_foreground);
+            blue.setImageResource(R.mipmap.ic_blue_done_foreground);
         }
 
         if (FakeDatabase.getInstance().isQuizDone()){
