@@ -10,8 +10,7 @@ import android.widget.ImageView;
 
 
 public class Challenge extends AppCompatActivity implements View.OnClickListener {
-     private  ImageView blue;
-     private ImageView quiz;
+     private ImageView blue, quiz, map;
      private ConstraintLayout constraintLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +19,13 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
         blue = (ImageView) findViewById(R.id.blue);
         quiz = (ImageView) findViewById(R.id.quiz);
+        map = (ImageView) findViewById(R.id.mapView);
 
         constraintLayout = findViewById(R.id.popUP);
         // set on click listeners
         blue.setOnClickListener(this);
         quiz.setOnClickListener(this);
+        map.setOnClickListener(this);
 
         if (FakeDatabase.getInstance().isChallengeDone()){
             blue.setImageResource(R.mipmap.ic_blue_prog_foreground);
@@ -61,17 +62,22 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
             case R.id.quiz:
                 FakeDatabase.getInstance().setQuizDone();
-
-                Intent in = new Intent(v.getContext(), Quiz.class);
-//                in.putExtra("message", "Quiz selected, change button");
-                startActivity(in);
+//                Intent in = new Intent(v.getContext(), Quiz.class);
+//                startActivity(in);
                 break;
 
             case R.id.button3:
                 constraintLayout.setVisibility(View.INVISIBLE);
-                Intent in2 = new Intent(v.getContext(), NavMap.class);
-//                in.putExtra("message", "Quiz selected, change button");
+                //change text to new dialog box
+
+                Intent in2 = new Intent(v.getContext(), Loading.class);
                 startActivity(in2);
+                break;
+
+            case R.id.mapView:
+                constraintLayout.setVisibility(View.INVISIBLE);
+                Intent in3 = new Intent(v.getContext(), NavMap.class);
+                startActivity(in3);
                 break;
         }
     }
