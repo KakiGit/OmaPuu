@@ -1,10 +1,13 @@
 package fi.omapuu.omapuu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 // Mapbox access token is configured here. This needs to be called either in your application
 // object or in the same activity which contains the mapview.
@@ -58,6 +62,15 @@ public class MainActivity extends AppCompatActivity implements
 
 // This contains the MapView in XML and needs to be called after the access token is configured.
         setContentView(R.layout.activity_main);
+
+        Button goBtn = findViewById(R.id.button);
+        goBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), PlantTree.class);
+                startActivity(intent);
+            }
+        });
 
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
@@ -191,7 +204,6 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public boolean onMapClick(@NonNull LatLng point) {
         Log.d("OmaPuu","map tapped");
-
         return false;
     }
 

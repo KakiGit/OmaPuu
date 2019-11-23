@@ -74,10 +74,10 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="f7f7f7" />
-                                      <entry key="backgroundLayerName" value="ic_notebookbackground" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/notebook-2.png" />
-                                      <entry key="foregroundLayerName" value="ic_notebookforeground" />
-                                      <entry key="outputName" value="ic_notebook" />
+                                      <entry key="backgroundLayerName" value="ic_nuuksiobackground" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/nuuksiomap.png" />
+                                      <entry key="foregroundLayerName" value="ic_nuuksioforeground" />
+                                      <entry key="outputName" value="ic_nuuksio" />
                                     </map>
                                   </option>
                                 </PersistentState>
