@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,6 +27,8 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         blue.setOnClickListener(this);
         quiz.setOnClickListener(this);
         map.setOnClickListener(this);
+        Button noBtn = findViewById(R.id.nobtn);
+        noBtn.setOnClickListener(this);
 
         if (FakeDatabase.getInstance().isChallengeDone()){
             blue.setImageResource(R.mipmap.ic_blue_prog_foreground);
@@ -43,21 +46,16 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 startActivity(intent);
             }
         });
+
 
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        blue = (ImageView) findViewById(R.id.blue);
-        quiz = (ImageView) findViewById(R.id.quiz);
-        map = (ImageView) findViewById(R.id.view_map);
 
-        constraintLayout = findViewById(R.id.popUP);
-        // set on click listeners
-        blue.setOnClickListener(this);
-        quiz.setOnClickListener(this);
-        map.setOnClickListener(this);
+        constraintLayout.setVisibility(View.INVISIBLE);
+
 
         if (FakeDatabase.getInstance().isChallengeDone()){
             blue.setImageResource(R.mipmap.ic_blue_prog_foreground);
@@ -67,14 +65,8 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
             quiz.setImageResource(R.mipmap.ic_quiz_foreground);
         }
 
-        Button yesBtn = findViewById(R.id.button3);
-        yesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),NavMap.class);
-                startActivity(intent);
-            }
-        });
+
+
     }
 
     @Override
@@ -99,9 +91,9 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 startActivity(in2);
                 break;
 
-            // close dialog
-            case R.id.button4:
+            case R.id.nobtn:
                 constraintLayout.setVisibility(View.INVISIBLE);
+                Log.d("OmaPuu","btn 4 pressed");
                 break;
 
             case R.id.view_map:
