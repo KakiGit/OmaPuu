@@ -1,5 +1,6 @@
 package fi.omapuu.omapuu;
 
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,13 +46,17 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
             case R.id.quiz:
                 FakeDatabase.getInstance().setQuizDone();
-                constraintLayout.setVisibility(View.VISIBLE);
+
+                Intent in = new Intent(v.getContext(), Quiz.class);
+//                in.putExtra("message", "Quiz selected, change button");
+                startActivity(in);
                 break;
 
-            case R.id.button4:
-                FakeDatabase.getInstance().resetChallenge();
-                FakeDatabase.getInstance().resetQuiz(); // no selection
+            case R.id.button3:
                 constraintLayout.setVisibility(View.INVISIBLE);
+                Intent in2 = new Intent(v.getContext(), NavMap.class);
+//                in.putExtra("message", "Quiz selected, change button");
+                startActivity(in2);
                 break;
         }
     }
